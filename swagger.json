@@ -8,7 +8,6 @@
   "host": "p2-zcd1.onrender.com/",
   "basePath": "/",
   "schemes": [
-    "http",
     "https"
   ],
   "paths": {

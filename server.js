@@ -1,5 +1,4 @@
 const express = require('express');
-const cors = require('cors');
 const bodyParser = ('body-parser');
 const mongodb = require('./data/database');
 const app = express();
@@ -18,6 +17,11 @@ app.use((req, res, next) => {
         next();
 });
 app.use('/', require('./routes'));
+
+// Catch all error
+process.on('uncaughtExpectation', (err, origin) => {
+    console.log(process.stderr.fd, `Caughty exception: ${err}\n` + `Exception origin: ${origin}`);
+});
 
 mongodb.initDb((err) => {
     if(err) {

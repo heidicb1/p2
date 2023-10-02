@@ -1,18 +1,18 @@
 const mongodb = require('../data/database');
-
-
 const ObjectId = require('mongodb').ObjectId;
-
 
 const getAll = async (req, res) => {
     // #swagger.tags=['professor] tags keep things together
-
-    const result = await mongodb.getDatabase().db().collection('professor').find();
+    const result = await mongodb.getDatabase().db().collection('professor').find().Array((err, lists) =>{
+        if (err) {
+            res.status(400).json({message: err});
+        }
+    });
 
     result.toArray().then((professor) => {
         res.setHeader('Content-Type', 'application/json');
         res.status(200).json(professor)
-    }); // Can add a .catch err
+    }); 
 };
 const getSingle = async (req, res) => {
     const professorId = new ObjectId(req.params.id);
