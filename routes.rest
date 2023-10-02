@@ -1,0 +1,44 @@
+### PROFERSSOR
+GET http://localhost:3000/professor HTTP/1.1 
+### 
+GET https://p2-zcd1.onrender.com/professor HTTP/1.1 
+### 
+POST http://localhost:3000/professor HTTP/1.1 Content-Type: application/json
+
+{
+    "firstName": null, "lastName": null, "email": null, "hireYear": null, "department": null, "title": null, "course": null
+}
+
+### 
+PUT http://localhost:3000/professor/6512466e40e384a2e4fb28e4 HTTP/1.1 Content-Type: application/json
+
+{
+"firstName": null, "lastName": null, "email": null, "hireYear": null, "department": null, "title": null, "course": null
+}
+
+### 
+DELETE https://p2-zcd1.onrender.com/professor/6512466e40e384a2e4fb28e4 HTTP/1.1
+
+
+### STUDENT
+GET http://localhost:3000/student HTTP/1.1 
+### 
+GET https://p2-zcd1.onrender.com/student HTTP/1.1 
+### 
+POST http://localhost:3000/student HTTP/1.1 Content-Type: application/json
+
+{
+    "firstName": null, "lastName": null, "email": null, "age": null, "gender": null, 
+    "major": null, "gpa": null, "enrollmetnDate": null, "projectedGraduationDate": null
+}
+
+### 
+PUT http://localhost:3000/student/651245e740e384a2e4fb28e1 HTTP/1.1 Content-Type: application/json
+
+{
+    "firstName": null, "lastName": null, "email": null, "age": null, "gender": null, 
+    "major": null, "gpa": null, "enrollmetnDate": null, "projectedGraduationDate": null
+}
+
+### 
+DELETE https://p2-zcd1.onrender.com/student/651245e740e384a2e4fb28e1 HTTP/1.1

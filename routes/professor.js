@@ -3,19 +3,19 @@ const express = require('express');
 const router = express.Router();
 
 // Redirect to another folder called controllers to keep all logic straight
-const usersController = require('../controllers/professor');
+const professorController = require('../controllers/professor');
 
 // create two routes get and get all in this current file and variables in the user.js controllers folder 
 // Add all 5 endpoints
 // get all route
-router.get('/', usersController.getAll);
+router.get('/', professorController.getAll);
 // get route
-router.get('/:id', usersController.getSingle);
+router.get('/:id', professorController.getSingle);
 // Used to create
-router.post('/', usersController.createUser);
+router.post('/', professorController.createUser);
 // Used to update
-router.put('/:id', usersController.updateUser);
+router.put('/:id', professorController.updateUser);
 // Used to remove
-router.delete('/:id', usersController.deleteUser);
+router.delete('/:id', professorController.deleteUser);
 // Export
 module.exports = router;
