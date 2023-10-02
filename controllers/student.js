@@ -7,13 +7,6 @@ const ObjectId = require('mongodb').ObjectId;
 
 const getAll = async (req, res) => {
     // #swagger.tags=['student] tags keep things together
-    // variable that connects to the database
-    // Use mongodb connection 
-    // .db() is a mongodb function to get the database with opt. parameter 
-    // the opt. parameter allows one to pass in the database name GOOD FOR multi database
-    // ex. mongodb.initDb.getDatabase().db('student').collection('student').find()
-    // However with this project just add student to the of the .env file GOOD FOR single database
-    // Find is a find command searches for wild cards or like and differnt fields
     const result = await mongodb.getDatabase().db().collection('student').find();
     // Take results convert to an array then take teh object that comes back and call it student
     // then it passes into anonymous function
