@@ -2,35 +2,25 @@
   "swagger": "2.0",
   "info": {
     "title": "School API",
-    "description": "Professor/Student API",
+    "description": "Professor API",
     "version": "1.0.0"
   },
-  "host": "localhost:3000",
+  "host": "https://p2-zcd1.onrender.com/",
   "basePath": "/",
   "schemes": [
-    "https",
-    "http"
+    "http",
+    "https"
   ],
   "paths": {
     "/": {
       "get": {
         "tags": [
-          "Hello World"
+          "Professor"
         ],
         "description": "",
         "responses": {
           "200": {
             "description": "OK"
-          }
-        }
-      }
-    },
-    "/api-docs": {
-      "get": {
-        "description": "",
-        "responses": {
-          "default": {
-            "description": ""
           }
         }
       }
