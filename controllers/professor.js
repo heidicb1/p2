@@ -15,8 +15,8 @@ const getAll = async (req, res) => {
     }); // Can add a .catch err
 };
 const getSingle = async (req, res) => {
-    const userId = new ObjectId(req.params.id);
-    const result = await mongodb.getDatabase().db().collection('professor').find( {_id: userId} );
+    const professorId = new ObjectId(req.params.id);
+    const result = await mongodb.getDatabase().db().collection('professor').find( {_id: professorId} );
     result.toArray().then((professor) => {
         res.setHeader('Content-Type', 'application/json');
         res.status(200).json(professor)
@@ -26,7 +26,7 @@ const getSingle = async (req, res) => {
 
 const createUser = async (req, res) => {
     // #swagger.tags=['professor]
-    const user = {
+    const professor = {
         firstName: req.body.firstName,
         lastName: req.body.lastName,
         hireYear: req.body.hireYear,
@@ -36,19 +36,19 @@ const createUser = async (req, res) => {
         course: require.body.course
     };
     
-    const response = await mongodb.getDatabase().db().collection('professor').insertOne(user); 
+    const response = await mongodb.getDatabase().db().collection('professor').insertOne(professor); 
     if (response.acknowledged) {
         res.status(204).send();
     } else {
-        res.status(500).json(response.error || "Some error occured while creating the user.");
+        res.status(500).json(response.error || "Some error occured while creating the professor.");
     }
 
 };
 
 const updateUser = async (req, res) => {
     // #swagger.tags=['professor]
-    const userId = new ObjectId(req.params.id);
-    const user = {
+    const professorId = new ObjectId(req.params.id);
+    const professor = {
         firstName: req.body.firstName,
         lastName: req.body.lastName,
         hireYear: req.body.hireYear,
@@ -58,23 +58,23 @@ const updateUser = async (req, res) => {
         course: require.body.course
     };
     
-    const response = await mongodb.getDatabase().db().collection('professor').replaceOne({ _id: userId }, user);
+    const response = await mongodb.getDatabase().db().collection('professor').replaceOne({ _id: professorId }, professor);
     if (response.modifiedCount > 0) {
         res.status(204).send();
     } else {
-        res.status(500).json(response.error || "Some error occured while updating the user.");
+        res.status(500).json(response.error || "Some error occured while updating the professor.");
     }
 
 };
 
 const deleteUser = async (req, res) => {
     // #swagger.tags=['professor]
-    const userId = new ObjectId(req.params.id);
-    const response = await mongodb.getDatabase().db().collection('professor').deleteOne({ _id: userId }, true);
+    const professorId = new ObjectId(req.params.id);
+    const response = await mongodb.getDatabase().db().collection('professor').deleteOne({ _id: professorId }, true);
     if (response.deletedCount > 0) {
         res.status(204).send();
     } else {
-        res.status(500).json(response.error || "Some error occured while deleting the user.");
+        res.status(500).json(response.error || "Some error occured while deleting the professor.");
     }
 
 };
