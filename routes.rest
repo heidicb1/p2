@@ -29,7 +29,7 @@ POST http://localhost:3000/student HTTP/1.1 Content-Type: application/json
 
 {
     "firstName": null, "lastName": null, "email": null, "age": null, "gender": null, 
-    "major": null, "gpa": null, "enrollmentDate": null, "projectedGraduationDate": null
+    "major": null, "gpa": null, "enrollmentDate": 2022, "projectedGraduationDate": null
 }
 
 ### 
@@ -37,7 +37,7 @@ PUT http://localhost:3000/student/651245e740e384a2e4fb28e1 HTTP/1.1 Content-Type
 
 {
     "firstName": null, "lastName": null, "email": null, "age": null, "gender": null, 
-    "major": null, "gpa": null, "enrollmentDate": null, "projectedGraduationDate": null
+    "major": null, "gpa": null, "enrollmentDate": 2022, "projectedGraduationDate": null
 }
 
 ### 

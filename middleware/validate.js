@@ -1,3 +1,7 @@
+const express = require('express');
+const bodyParser = require('body-parser');
+const app = express();
+app.use(bodyParser.json())
 const { body, validationResult } = require('express-validator');
 
 const saveProfessor = (req, res, next) => {
