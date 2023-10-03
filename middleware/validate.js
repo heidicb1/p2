@@ -5,7 +5,7 @@ app.use(bodyParser.json())
 const { body, validationResult } = require('express-validator');
 
 const saveProfessor = (req, res, next) => {
-  console.log('Request Body:', req.body);
+  console.log('Request body:', req.body);
   // Define validation rules for the 'firstName' field
   const validationRules = [
     body('firstName').notEmpty().withMessage('First name is required'),
@@ -37,18 +37,18 @@ const saveProfessor = (req, res, next) => {
 };
 
 const saveStudent = (req, res, next) => {
-  console.log('Request Body:', req.body);
+  console.log('Request body:', req.body);
   // Define validation rules for the 'firstName' field
   const validationRules = [
-    body('firstName').notEmpty().withMessage('First name is required'),
-    body('lastName').notEmpty().withMessage('Last name is required'),
-    body('age').notEmpty().withMessage('Age is required'),
-    body('gender').notEmpty().withMessage('Gender is required'),
-    body('major').notEmpty().withMessage('Major is required'),
-    body('gpa').notEmpty().withMessage('GPA is required'),
-    body('enrollmentDate').notEmpty().withMessage('Enrollment date is required'),
-    body('projectedGraduationDate').notEmpty().withMessage('Projected graduation date is required'),
-    body('email').notEmpty().withMessage('Email is required')
+    check('firstName').notEmpty().withMessage('First name is required'),
+    check('lastName').notEmpty().withMessage('Last name is required'),
+    check('age').notEmpty().withMessage('Age is required'),
+    check('gender').notEmpty().withMessage('Gender is required'),
+    check('major').notEmpty().withMessage('Major is required'),
+    check('gpa').notEmpty().withMessage('GPA is required'),
+    check('enrollmentDate').notEmpty().withMessage('Enrollment date is required'),
+    check('projectedGraduationDate').notEmpty().withMessage('Projected graduation date is required'),
+    check('email').notEmpty().withMessage('Email is required')
     // Add more validation rules for other fields if needed
   ];
 

@@ -1,18 +1,22 @@
+// Import modules and controllers
 const express = require('express');
 const router = express.Router();
-const professorController = require('../controllers/professor');
-const validation = require('../middleware/validate');
+// Import professorController for handling professor-related routes
+const professorController = require('../controllers/professor'); 
+// Import validation middleware for request validation
+const validation = require('../middleware/validate'); 
 
-
-
-router.get('/', professorController.getAll);
-
+// Define the routes and their corresponding controller functions
+// Handle GET request to fetch all professors
+router.get('/', professorController.getAll); 
+// Handle GET request to fetch a single professor by ID
 router.get('/:id', professorController.getSingle);
+// Handle POST request to create a new professor, including validation 
+router.post('/', validation.saveProfessor, professorController.createProfessor); 
+// Handle PUT request to update a professor by ID
+router.put('/:id', professorController.updateProfessor); 
+// Handle DELETE request to delete a professor by ID
+router.delete('/:id', professorController.deleteProfessor); 
 
-router.post('/', validation.saveProfessor, professorController.createUser);
-
-router.put('/:id', professorController.updateUser);
-
-router.delete('/:id', professorController.deleteUser);
-
+// Export the router for use in the application
 module.exports = router;
