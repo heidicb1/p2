@@ -3,9 +3,7 @@ const mongodb = require('../data/database');
 // This is the unique object ID that mongo assigns to all it's database entires. 
 // It is basically a primary key of your data (example user_id)
 const ObjectId = require('mongodb').ObjectId;
-// VALIDATION install express validator
-const { validationResult } = require('express-validator');
-const { validateCreateUser, validateUpdateUser } = require('./validation');
+
 
 const getAll = async (req, res) => {
     // #swagger.tags=['professor] tags keep things together
@@ -33,12 +31,6 @@ const getSingle = async (req, res) => {
 // In order for this to work we need a body parser in the app.js
 const createUser = async (req, res) => {
     // #swagger.tags=['professor]
-    //VALIDATION HANDLING
-    const errors = validationResult(req);
-    if (!errors.isEmpty()) {
-      return res.status(400).json({ errors: errors.array() });
-    }
-
     const user = {
         
         firstName: req.body.firstName,
@@ -64,10 +56,6 @@ const createUser = async (req, res) => {
 const updateUser = async (req, res) => {
     // #swagger.tags=['professor]
     const userId = new ObjectId(req.params.id);
-    const errors = validationResult(req);
-    if (!errors.isEmpty()) {
-      return res.status(400).json({ errors: errors.array() });
-    }
     const user = {
         firstName: req.body.firstName,
         lastName: req.body.lastName,
