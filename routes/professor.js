@@ -3,6 +3,8 @@ const router = express.Router();
 const professorController = require('../controllers/professor');
 const validation = require('../middleware/validate');
 
+
+
 router.get('/', professorController.getAll);
 
 router.get('/:id', professorController.getSingle);

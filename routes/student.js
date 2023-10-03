@@ -1,9 +1,10 @@
 // Add express and express router
 const express = require('express');
 const router = express.Router();
+const validation = require('../middleware/validate');
 // Redirect to another folder called controllers to keep all logic straight
 const studentController = require('../controllers/student');
-const validation = require('../middleware/validate');
+
 
 // create two routes get and get all in this current file and variables in the user.js controllers folder 
 // Add all 5 endpoints
