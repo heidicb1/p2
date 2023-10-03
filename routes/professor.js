@@ -9,7 +9,7 @@ router.get('/', professorController.getAll);
 
 router.get('/:id', professorController.getSingle);
 
-router.post('/', professorController.createUser);
+router.post('/', validation.saveProfessor, professorController.createUser);
 
 router.put('/:id', professorController.updateUser);
 

@@ -1,4 +1,5 @@
-const validator = require('../helpers/validate');
+const validator = require('express-validator');
+const { query, validationResult} = require('express-validator');
 
 const saveProfessor = (req, res, next) => {
   const validationRule = {
