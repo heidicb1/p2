@@ -14,7 +14,7 @@ router.get('/:id', professorController.getSingle);
 // Handle POST request to create a new professor, including validation 
 router.post('/', validation.saveProfessor, professorController.createProfessor); 
 // Handle PUT request to update a professor by ID
-router.put('/:id', professorController.updateProfessor); 
+router.put('/:id', validation.saveProfessor, professorController.updateProfessor); 
 // Handle DELETE request to delete a professor by ID
 router.delete('/:id', professorController.deleteProfessor); 
 

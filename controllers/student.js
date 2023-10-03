@@ -13,9 +13,9 @@ const getAll = async (req, res) => {
 
 // Function to get a single student by ID
 const getSingle = async (req, res) => {
-    const userId = new ObjectId(req.params.id);
+    const studentId = new ObjectId(req.params.id);
     try {
-        const student = await mongodb.getDatabase().db().collection('student').findOne({ _id: userId });
+        const student = await mongodb.getDatabase().db().collection('student').findOne({ _id: studentId });
         if (!student) {
             res.status(404).json({ message: 'Student not found' });
         } else {
@@ -27,8 +27,8 @@ const getSingle = async (req, res) => {
 };
 
 // Function to create a new student
-const createUser = async (req, res) => {
-    const user = {
+const createstudent = async (req, res) => {
+    const student = {
         firstName: req.body.firstName,
         lastName: req.body.lastName,
         age: req.body.age,
@@ -40,11 +40,11 @@ const createUser = async (req, res) => {
     };
     
     try {
-        const response = await mongodb.getDatabase().db().collection('student').insertOne(user);
+        const response = await mongodb.getDatabase().db().collection('student').insertOne(student);
         if (response.acknowledged) {
             res.status(204).send();
         } else {
-            res.status(500).json(response.error || "Some error occurred while creating the user.");
+            res.status(500).json(response.error || "Some error occurred while creating the student.");
         }
     } catch (error) {
         res.status(500).json({ error: error.message });
@@ -52,9 +52,9 @@ const createUser = async (req, res) => {
 };
 
 // Function to update a student by ID
-const updateUser = async (req, res) => {
-    const userId = new ObjectId(req.params.id);
-    const user = {
+const updatestudent = async (req, res) => {
+    const studentId = new ObjectId(req.params.id);
+    const student = {
         firstName: req.body.firstName,
         lastName: req.body.lastName,
         age: req.body.age,
@@ -62,11 +62,12 @@ const updateUser = async (req, res) => {
         major: req.body.major,
         gpa: req.body.gpa,
         enrollmentDate: req.body.enrollmentDate,
-        projectedGraduationDate: req.body.projectedGraduationDate
+        projectedGraduationDate: req.body.projectedGraduationDate,
+        email: req.body.email
     };
     
     try {
-        const response = await mongodb.getDatabase().db().collection('student').replaceOne({ _id: userId }, user);
+        const response = await mongodb.getDatabase().db().collection('student').replaceOne({ _id: studentId }, student);
         if (response.modifiedCount > 0) {
             res.status(204).send();
         } else {
@@ -78,11 +79,11 @@ const updateUser = async (req, res) => {
 };
 
 // Function to delete a student by ID
-const deleteUser = async (req, res) => {
-    const userId = new ObjectId(req.params.id);
+const deletestudent = async (req, res) => {
+    const studentId = new ObjectId(req.params.id);
     
     try {
-        const response = await mongodb.getDatabase().db().collection('student').deleteOne({ _id: userId });
+        const response = await mongodb.getDatabase().db().collection('student').deleteOne({ _id: studentId });
         if (response.deletedCount > 0) {
             res.status(204).send();
         } else {
@@ -96,7 +97,7 @@ const deleteUser = async (req, res) => {
 module.exports = {
     getAll,
     getSingle,
-    createUser,
-    updateUser,
-    deleteUser
+    createstudent,
+    updatestudent,
+    deletestudent
 };

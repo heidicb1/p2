@@ -6,17 +6,17 @@ const validation = require('../middleware/validate');
 const studentController = require('../controllers/student');
 
 
-// create two routes get and get all in this current file and variables in the user.js controllers folder 
+// create two routes get and get all in this current file and variables in the student.js controllers folder 
 // Add all 5 endpoints
 // get all route
 router.get('/', studentController.getAll);
 // get route
 router.get('/:id', studentController.getSingle);
 // Used to create
-router.post('/', validation.saveStudent, studentController.createUser);
+router.post('/', validation.saveStudent, studentController.createstudent);
 // Used to update
-router.put('/:id', studentController.updateUser);
+router.put('/:id', validation.saveStudent, studentController.updatestudent);
 // Used to remove
-router.delete('/:id', studentController.deleteUser);
+router.delete('/:id', studentController.deletestudent);
 // Export
 module.exports = router;
