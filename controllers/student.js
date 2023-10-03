@@ -7,7 +7,7 @@ const getAll = async (req, res) => {
         const students = await mongodb.getDatabase().db().collection('student').find().toArray();
         res.status(200).json(students);
     } catch (error) {
-        res.status(500).json({ error: error.message });
+        res.status(500).json({ error: "An error occurred while fetching students.", details: error.message });
     }
 };
 
@@ -22,7 +22,7 @@ const getSingle = async (req, res) => {
             res.status(200).json(student);
         }
     } catch (error) {
-        res.status(500).json({ error: error.message });
+        res.status(500).json({ error: "An error occurred while fetching the student.", details: error.message });
     }
 };
 
@@ -44,10 +44,10 @@ const createstudent = async (req, res) => {
         if (response.acknowledged) {
             res.status(204).send();
         } else {
-            res.status(500).json(response.error || "Some error occurred while creating the student.");
+            res.status(500).json({ error: "Failed to insert student into the database." });
         }
     } catch (error) {
-        res.status(500).json({ error: error.message });
+        res.status(500).json({ error: "An error occurred while creating the student.", details: error.message });
     }
 };
 
@@ -74,7 +74,7 @@ const updatestudent = async (req, res) => {
             res.status(404).json({ message: 'Student not found' });
         }
     } catch (error) {
-        res.status(500).json({ error: error.message });
+        res.status(500).json({ error: "An error occurred while updating the student.", details: error.message });
     }
 };
 
@@ -90,7 +90,7 @@ const deletestudent = async (req, res) => {
             res.status(404).json({ message: 'Student not found' });
         }
     } catch (error) {
-        res.status(500).json({ error: error.message });
+        res.status(500).json({ error: "An error occurred while deleting the student.", details: error.message });
     }
 };
 
