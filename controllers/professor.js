@@ -1,85 +1,81 @@
 const mongodb = require('../data/database');
 const ObjectId = require('mongodb').ObjectId;
 
-const getAll = (req, res) => {
+
+const getAll = async (req, res) => {
     // #swagger.tags=['professor] tags keep things together
-    mongodb.getDatabase().db().collection('professor').find()
-    .toArray((err, professor) =>{
-        if (err) {
-            res.status(400).json({message: err});
-        }
+    // Take results convert to an array then take the object that comes back and call it professor
+    // then it passes into anonymous function
+    result.toArray().then((professor) => {
         res.setHeader('Content-Type', 'application/json');
         res.status(200).json(professor)
-    });
+    }); // ADD .catch err
 };
-const getSingle = (req, res) => {
-    const professorId = new ObjectId(req.params.id);
-    mongodb.getDatabase().db().collection('professor').find( {_id: professorId} )
-    .toArray((err, result) => {
-        if (err) {
-            res.status(400).json({message: err});
-        }
+const getSingle = async (req, res) => {
+    // #swagger.tags=['professor]
+    const userId = new ObjectId(req.params.id);
+    const result = await mongodb.getDatabase().db().collection('professor').find( {_id: userId} );
+    result.toArray().then((professor) => {
         res.setHeader('Content-Type', 'application/json');
-        res.status(200).json(result[0]);
-    });
+        res.status(200).json(professor)
+    }); // ADD a .catch err
 };
-        
 
 const createUser = async (req, res) => {
     // #swagger.tags=['professor]
-    const professor = {
+    const user = {
         firstName: req.body.firstName,
         lastName: req.body.lastName,
-        hireYear: req.body.hireYear,
-        department: req.body.department,
-        title: req.body.title,
         email: req.body.email,
-        course: require.body.course
+        favoriteColor: req.body.favoriteColor,
+        birthday: req.body.birthday
     };
-    
-    const response = await mongodb.getDatabase().db().collection('professor').insertOne(professor); 
+    const response = await mongodb.getDatabase().db().collection('professor').insertOne(user);
     if (response.acknowledged) {
         res.status(204).send();
     } else {
-        res.status(500).json(response.error || "Some error occured while creating the professor.");
+        res.status(500).json(response.error || "Some error occured while creating the user.");
     }
 
 };
 
 const updateUser = async (req, res) => {
     // #swagger.tags=['professor]
-    const professorId = new ObjectId(req.params.id);
-    const professor = {
+    const userId = new ObjectId(req.params.id);
+    const user = {
         firstName: req.body.firstName,
         lastName: req.body.lastName,
-        hireYear: req.body.hireYear,
-        department: req.body.department,
-        title: req.body.title,
         email: req.body.email,
-        course: require.body.course
+        favoriteColor: req.body.favoriteColor,
+        birthday: req.body.birthday
     };
-    
-    const response = await mongodb.getDatabase().db().collection('professor').replaceOne({ _id: professorId }, professor);
+    const response = await mongodb.getDatabase().db().collection('professor').replaceOne({ _id: userId }, user);
+    // Check the response - basically if there is something there then it work 
     if (response.modifiedCount > 0) {
         res.status(204).send();
+    // Otherwise print out this error
     } else {
-        res.status(500).json(response.error || "Some error occured while updating the professor.");
+        res.status(500).json(response.error || "Some error occured while updating the user.");
     }
 
 };
 
 const deleteUser = async (req, res) => {
     // #swagger.tags=['professor]
-    const professorId = new ObjectId(req.params.id);
-    const response = await mongodb.getDatabase().db().collection('professor').deleteOne({ _id: professorId }, true);
+    const userId = new ObjectId(req.params.id);
+    // Get user information and delete it
+    const response = await mongodb.getDatabase().db().collection('professor').deleteOne({ _id: userId }, true);
+    // Check the response - basically if there is something there then it work 
     if (response.deletedCount > 0) {
         res.status(204).send();
+    // Otherwise print out this error
     } else {
-        res.status(500).json(response.error || "Some error occured while deleting the professor.");
+        res.status(500).json(response.error || "Some error occured while deleting the user.");
     }
 
 };
 
+// Export functions
 
 module.exports = {
     getAll, 
