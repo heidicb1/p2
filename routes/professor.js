@@ -8,15 +8,15 @@ const validation = require('../middleware/validate');
 
 // Define the routes and their corresponding controller functions
 // Handle GET request to fetch all professors
-router.get('/', professorController.getAll); 
+router.get('/professor', professorController.getAll); 
 // Handle GET request to fetch a single professor by ID
-router.get('/:id', professorController.getSingle);
+router.get('/professor:id', professorController.getSingle);
 // Handle POST request to create a new professor, including validation 
-router.post('/', validation.saveProfessor, professorController.createProfessor); 
+router.post('/professor', validation.saveProfessor, professorController.createProfessor); 
 // Handle PUT request to update a professor by ID
-router.put('/:id', validation.saveProfessor, professorController.updateProfessor); 
+router.put('/professor:id', validation.saveProfessor, professorController.updateProfessor); 
 // Handle DELETE request to delete a professor by ID
-router.delete('/:id', professorController.deleteProfessor); 
+router.delete('/professor:id', professorController.deleteProfessor); 
 
 // Export the router for use in the application
 module.exports = router;
