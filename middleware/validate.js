@@ -1,28 +1,47 @@
-const validator = require('express-validator');
-const { query, validationResult} = require('express-validator');
+const { body, validationResult } = require('express-validator');
 
 const saveProfessor = (req, res, next) => {
-  const validationRule = {
-    firstName: 'required|string',
-    lastName: 'required|string',
-    hireYear: 'required|int',
-    department: 'required|string',
-    title: 'required|string',
-    email: 'required|email',
-    course: 'required|string'
-  };
-  validator(req.body, validationRule, {}, (err, status) => {
-    if (!status) {
-      res.status(412).send({
+  console.log('Request Body:', req.body);
+  // Define validation rules for the 'firstName' field
+  const validationRules = [
+    body('firstName').notEmpty().withMessage('First name is required'),
+    // Add more validation rules for other fields if needed
+  ];
+
+  // Run validation
+  Promise.all(validationRules.map(validation => validation.run(req))).then(() => {
+    const errors = validationResult(req);
+
+    if (!errors.isEmpty()) {
+      // Validation failed, send an error response
+      return res.status(412).json({
         success: false,
         message: 'Validation failed',
-        data: err
+        errors: errors.array(),
       });
-    } else {
-      next();
     }
+
+    // Validation passed, proceed to the next middleware
+    next();
   });
 };
+
+module.exports = {
+  saveProfessor
+};
+
+  // validator(req.body, validationRule, {}, (err, status) => {
+  //   if (!status) {
+  //     res.status(412).send({
+  //       success: false,
+  //       message: 'Validation failed',
+  //       data: err
+  //     });
+  //   } else {
+  //     next();
+  //   }
+  // });
+
 
 module.exports = {
   saveProfessor
