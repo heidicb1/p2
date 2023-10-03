@@ -1,28 +1,29 @@
 const mongodb = require('../data/database');
 const ObjectId = require('mongodb').ObjectId;
 
-const getAll = async (req, res) => {
+const getAll = (req, res) => {
     // #swagger.tags=['professor] tags keep things together
-    const result = await mongodb.getDatabase().db().collection('professor').find().Array((err, lists) =>{
+    mongodb.getDatabase().db().collection('professor').find()
+    .toArray((err, professor) =>{
         if (err) {
             res.status(400).json({message: err});
         }
+        res.setHeader('Content-Type', 'application/json');
+        res.status(200).json(professor)
     });
-
-    result.toArray().then((professor) => {
-        res.setHeader('Content-Type', 'application/json');
-        res.status(200).json(professor)
-    }); 
 };
-const getSingle = async (req, res) => {
+const getSingle = (req, res) => {
     const professorId = new ObjectId(req.params.id);
-    const result = await mongodb.getDatabase().db().collection('professor').find( {_id: professorId} );
-    result.toArray().then((professor) => {
+    mongodb.getDatabase().db().collection('professor').find( {_id: professorId} )
+    .toArray((err, result) => {
+        if (err) {
+            res.status(400).json({message: err});
+        }
         res.setHeader('Content-Type', 'application/json');
-        res.status(200).json(professor)
-    }); // Can add a .catch err
+        res.status(200).json(result[0]);
+    });
 };
-
+        
 
 const createUser = async (req, res) => {
     // #swagger.tags=['professor]
