@@ -2,12 +2,12 @@
   "swagger": "2.0",
   "info": {
     "title": "School API",
-    "description": "Professor and Student API",
+    "description": "Professor API",
     "version": "1.0.0"
   },
   "host": "p2-zcd1.onrender.com",
   "basePath": "/",
-  "schemes": ["http", "https"],
+  "schemes": ["https", "http"],
   "paths": {
     "/professor/": {
       "get": {
