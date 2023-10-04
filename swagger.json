@@ -2,53 +2,42 @@
   "swagger": "2.0",
   "info": {
     "title": "School API",
-    "description": "Professor API",
+    "description": "Professor/Student API",
     "version": "1.0.0"
   },
-  "host": "p2-zcd1.onrender.com",
+  "host": "localhost:3000",
   "basePath": "/",
-  "schemes": ["https", "http"],
+  "schemes": [
+    "https",
+    "http"
+  ],
   "paths": {
-    "/professor/": {
+    "/": {
       "get": {
-        "tags": ["Professor"],
-        "description": "Get all professors",
+        "description": "",
         "responses": {
           "200": {
-            "description": "OK",
-            "schema": {
-              "type": "array",
-              "items": {
-                "type": "object",
-                "properties": {
-                  "id": {
-                    "type": "string",
-                    "description": "Unique identifier for the professor"
-                  },
-                  "firstName": {
-                    "type": "string"
-                  },
-                  "lastName": {
-                    "type": "string"
-                  },
-                  "hireYear": {
-                    "type": "integer"
-                  },
-                  "department": {
-                    "type": "string"
-                  },
-                  "title": {
-                    "type": "string"
-                  },
-                  "email": {
-                    "type": "string"
-                  },
-                  "course": {
-                    "type": "string"
-                  }
-                }
-              }
-            }
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api-docs": {
+      "get": {
+        "description": "",
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/professor/": {
+      "get": {
+        "description": "",
+        "responses": {
+          "200": {
+            "description": "OK"
           },
           "500": {
             "description": "Internal Server Error"
@@ -56,8 +45,7 @@
         }
       },
       "post": {
-        "tags": ["Professor"],
-        "description": "Create a new professor",
+        "description": "",
         "parameters": [
           {
             "name": "body",
@@ -66,63 +54,36 @@
               "type": "object",
               "properties": {
                 "firstName": {
-                  "example": "Jane"
+                  "example": "any"
                 },
                 "lastName": {
-                  "example": "Doe"
+                  "example": "any"
                 },
                 "hireYear": {
-                  "example": "2019"
+                  "example": "any"
                 },
                 "department": {
-                  "example": "Computer Science"
+                  "example": "any"
                 },
                 "title": {
-                  "example": "Professor"
+                  "example": "any"
                 },
                 "email": {
-                  "example": "janedoe@example.com"
+                  "example": "any"
                 },
                 "course": {
-                  "example": "CSE-340"
+                  "example": "any"
                 }
               }
             }
           }
         ],
         "responses": {
-          "201": {
-            "description": "Professor created successfully",
-            "schema": {
-              "type": "object",
-              "properties": {
-                "id": {
-                  "type": "string",
-                  "description": "Unique identifier for the created professor"
-                },
-                "firstName": {
-                  "type": "string"
-                },
-                "lastName": {
-                  "type": "string"
-                },
-                "hireYear": {
-                  "type": "integer"
-                },
-                "department": {
-                  "type": "string"
-                },
-                "title": {
-                  "type": "string"
-                },
-                "email": {
-                  "type": "string"
-                },
-                "course": {
-                  "type": "string"
-                }
-              }
-            }
+          "204": {
+            "description": "No Content"
+          },
+          "412": {
+            "description": "Precondition Failed"
           },
           "500": {
             "description": "Internal Server Error"
@@ -132,8 +93,7 @@
     },
     "/professor/{id}": {
       "get": {
-        "tags": ["Professor"],
-        "description": "Get a single professor by ID",
+        "description": "",
         "parameters": [
           {
             "name": "id",
@@ -144,40 +104,10 @@
         ],
         "responses": {
           "200": {
-            "description": "OK",
-            "schema": {
-              "type": "object",
-              "properties": {
-                "id": {
-                  "type": "string",
-                  "description": "Unique identifier for the professor"
-                },
-                "firstName": {
-                  "type": "string"
-                },
-                "lastName": {
-                  "type": "string"
-                },
-                "hireYear": {
-                  "type": "integer"
-                },
-                "department": {
-                  "type": "string"
-                },
-                "title": {
-                  "type": "string"
-                },
-                "email": {
-                  "type": "string"
-                },
-                "course": {
-                  "type": "string"
-                }
-              }
-            }
+            "description": "OK"
           },
           "404": {
-            "description": "Professor not found"
+            "description": "Not Found"
           },
           "500": {
             "description": "Internal Server Error"
@@ -185,8 +115,7 @@
         }
       },
       "put": {
-        "tags": ["Professor"],
-        "description": "Update a professor by ID",
+        "description": "",
         "parameters": [
           {
             "name": "id",
@@ -201,25 +130,25 @@
               "type": "object",
               "properties": {
                 "firstName": {
-                  "example": "Jane"
+                  "example": "any"
                 },
                 "lastName": {
-                  "example": "Doe"
+                  "example": "any"
                 },
                 "hireYear": {
-                  "example": 2019
+                  "example": "any"
                 },
                 "department": {
-                  "example": "Computer Science"
+                  "example": "any"
                 },
                 "title": {
-                  "example": "Professor"
+                  "example": "any"
                 },
                 "email": {
-                  "example": "janedoe@example.com"
+                  "example": "any"
                 },
                 "course": {
-                  "example": "CSE-340"
+                  "example": "any"
                 }
               }
             }
@@ -230,7 +159,10 @@
             "description": "No Content"
           },
           "404": {
-            "description": "Professor not found"
+            "description": "Not Found"
+          },
+          "412": {
+            "description": "Precondition Failed"
           },
           "500": {
             "description": "Internal Server Error"
@@ -238,8 +170,7 @@
         }
       },
       "delete": {
-        "tags": ["Professor"],
-        "description": "Delete a professor by ID",
+        "description": "",
         "parameters": [
           {
             "name": "id",
@@ -253,7 +184,7 @@
             "description": "No Content"
           },
           "404": {
-            "description": "Professor not found"
+            "description": "Not Found"
           },
           "500": {
             "description": "Internal Server Error"
@@ -263,52 +194,10 @@
     },
     "/student/": {
       "get": {
-        "tags": ["Student"],
-        "description": "Get all students",
+        "description": "",
         "responses": {
           "200": {
-            "description": "OK",
-            "schema": {
-              "type": "array",
-              "items": {
-                "type": "object",
-                "properties": {
-                  "id": {
-                    "type": "string",
-                    "description": "Unique identifier for the student"
-                  },
-                  "firstName": {
-                    "type": "string"
-                  },
-                  "lastName": {
-                    "type": "string"
-                  },
-                  "age": {
-                    "type": "integer"
-                  },
-                  "gender": {
-                    "type": "string"
-                  },
-                  "major": {
-                    "type": "string"
-                  },
-                  "gpa": {
-                    "type": "number"
-                  },
-                  "enrollmentDate": {
-                    "type": "string",
-                    "format": "date"
-                  },
-                  "projectedGraduationDate": {
-                    "type": "string",
-                    "format": "date"
-                  },
-                  "email": {
-                    "type": "string"
-                  }
-                }
-              }
-            }
+            "description": "OK"
           },
           "500": {
             "description": "Internal Server Error"
@@ -316,8 +205,7 @@
         }
       },
       "post": {
-        "tags": ["Student"],
-        "description": "Create a new student",
+        "description": "",
         "parameters": [
           {
             "name": "body",
@@ -326,77 +214,39 @@
               "type": "object",
               "properties": {
                 "firstName": {
-                  "example": "John"
+                  "example": "any"
                 },
                 "lastName": {
-                  "example": "Doe"
+                  "example": "any"
                 },
                 "age": {
-                  "example": 20
+                  "example": "any"
                 },
                 "gender": {
-                  "example": "Male"
+                  "example": "any"
                 },
                 "major": {
-                  "example": "Computer Science"
+                  "example": "any"
                 },
                 "gpa": {
-                  "example": 3.5
+                  "example": "any"
                 },
                 "enrollmentDate": {
-                  "example": "2023-10-01"
+                  "example": "any"
                 },
                 "projectedGraduationDate": {
-                  "example": "2027-05-15"
-                },
-                "email": {
-                  "example": "johndoe@example.com"
+                  "example": "any"
                 }
               }
             }
           }
         ],
         "responses": {
-          "201": {
-            "description": "Student created successfully",
-            "schema": {
-              "type": "object",
-              "properties": {
-                "id": {
-                  "type": "string",
-                  "description": "Unique identifier for the created student"
-                },
-                "firstName": {
-                  "type": "string"
-                },
-                "lastName": {
-                  "type": "string"
-                },
-                "age": {
-                  "type": "integer"
-                },
-                "gender": {
-                  "type": "string"
-                },
-                "major": {
-                  "type": "string"
-                },
-                "gpa": {
-                  "type": "number"
-                },
-                "enrollmentDate": {
-                  "type": "string",
-                  "format": "date"
-                },
-                "projectedGraduationDate": {
-                  "type": "string",
-                  "format": "date"
-                },
-                "email": {
-                  "type": "string"
-                }
-              }
-            }
+          "204": {
+            "description": "No Content"
+          },
+          "412": {
+            "description": "Precondition Failed"
           },
           "500": {
             "description": "Internal Server Error"
@@ -406,8 +256,7 @@
     },
     "/student/{id}": {
       "get": {
-        "tags": ["Student"],
-        "description": "Get a single student by ID",
+        "description": "",
         "parameters": [
           {
             "name": "id",
@@ -418,48 +267,10 @@
         ],
         "responses": {
           "200": {
-            "description": "OK",
-            "schema": {
-              "type": "object",
-              "properties": {
-                "id": {
-                  "type": "string",
-                  "description": "Unique identifier for the student"
-                },
-                "firstName": {
-                  "type": "string"
-                },
-                "lastName": {
-                  "type": "string"
-                },
-                "age": {
-                  "type": "integer"
-                },
-                "gender": {
-                  "type": "string"
-                },
-                "major": {
-                  "type": "string"
-                },
-                "gpa": {
-                  "type": "number"
-                },
-                "enrollmentDate": {
-                  "type": "string",
-                  "format": "date"
-                },
-                "projectedGraduationDate": {
-                  "type": "string",
-                  "format": "date"
-                },
-                "email": {
-                  "type": "string"
-                }
-              }
-            }
+            "description": "OK"
           },
           "404": {
-            "description": "Student not found"
+            "description": "Not Found"
           },
           "500": {
             "description": "Internal Server Error"
@@ -467,8 +278,7 @@
         }
       },
       "put": {
-        "tags": ["Student"],
-        "description": "Update a student by ID",
+        "description": "",
         "parameters": [
           {
             "name": "id",
@@ -483,31 +293,31 @@
               "type": "object",
               "properties": {
                 "firstName": {
-                  "example": "John"
+                  "example": "any"
                 },
                 "lastName": {
-                  "example": "Doe"
+                  "example": "any"
                 },
                 "age": {
-                  "example": 20
+                  "example": "any"
                 },
                 "gender": {
-                  "example": "Male"
+                  "example": "any"
                 },
                 "major": {
-                  "example": "Computer Science"
+                  "example": "any"
                 },
                 "gpa": {
-                  "example": 3.5
+                  "example": "any"
                 },
                 "enrollmentDate": {
-                  "example": "2023-10-01"
+                  "example": "any"
                 },
                 "projectedGraduationDate": {
-                  "example": "2027-05-15"
+                  "example": "any"
                 },
                 "email": {
-                  "example": "johndoe@example.com"
+                  "example": "any"
                 }
               }
             }
@@ -518,7 +328,10 @@
             "description": "No Content"
           },
           "404": {
-            "description": "Student not found"
+            "description": "Not Found"
+          },
+          "412": {
+            "description": "Precondition Failed"
           },
           "500": {
             "description": "Internal Server Error"
@@ -526,8 +339,7 @@
         }
       },
       "delete": {
-        "tags": ["Student"],
-        "description": "Delete a student by ID",
+        "description": "",
         "parameters": [
           {
             "name": "id",
@@ -541,7 +353,7 @@
             "description": "No Content"
           },
           "404": {
-            "description": "Student not found"
+            "description": "Not Found"
           },
           "500": {
             "description": "Internal Server Error"
