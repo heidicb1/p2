@@ -34,7 +34,8 @@
     },
     "/professor/": {
       "get": {
-        "description": "",
+        "tags": ["Professor"],
+        "description": "Professor",
         "responses": {
           "200": {
             "description": "OK"
@@ -45,6 +46,7 @@
         }
       },
       "post": {
+        "tags": ["Professor"],
         "description": "",
         "parameters": [
           {
@@ -54,25 +56,25 @@
               "type": "object",
               "properties": {
                 "firstName": {
-                  "example": "any"
+                  "example": "string"
                 },
                 "lastName": {
-                  "example": "any"
+                  "example": "string"
                 },
                 "hireYear": {
-                  "example": "any"
+                  "example": "integer"
                 },
                 "department": {
-                  "example": "any"
+                  "example": "string"
                 },
                 "title": {
-                  "example": "any"
+                  "example": "string"
                 },
                 "email": {
-                  "example": "any"
+                  "example": "string"
                 },
                 "course": {
-                  "example": "any"
+                  "example": "string"
                 }
               }
             }
@@ -93,6 +95,7 @@
     },
     "/professor/{id}": {
       "get": {
+        "tags": ["Professor"],
         "description": "",
         "parameters": [
           {
@@ -115,6 +118,7 @@
         }
       },
       "put": {
+        "tags": ["Professor"],
         "description": "",
         "parameters": [
           {
@@ -130,25 +134,25 @@
               "type": "object",
               "properties": {
                 "firstName": {
-                  "example": "any"
+                  "example": "string"
                 },
                 "lastName": {
-                  "example": "any"
+                  "example": "string"
                 },
                 "hireYear": {
-                  "example": "any"
+                  "example": "integer"
                 },
                 "department": {
-                  "example": "any"
+                  "example": "string"
                 },
                 "title": {
-                  "example": "any"
+                  "example": "string"
                 },
                 "email": {
-                  "example": "any"
+                  "example": "string"
                 },
                 "course": {
-                  "example": "any"
+                  "example": "string"
                 }
               }
             }
@@ -170,6 +174,7 @@
         }
       },
       "delete": {
+        "tags": ["Professor"],
         "description": "",
         "parameters": [
           {
@@ -194,6 +199,7 @@
     },
     "/student/": {
       "get": {
+        "tags": ["Student"],
         "description": "",
         "responses": {
           "200": {
@@ -205,6 +211,7 @@
         }
       },
       "post": {
+        "tags": ["Student"],
         "description": "",
         "parameters": [
           {
@@ -214,28 +221,31 @@
               "type": "object",
               "properties": {
                 "firstName": {
-                  "example": "any"
+                  "example": "string"
                 },
                 "lastName": {
-                  "example": "any"
+                  "example": "string"
                 },
                 "age": {
-                  "example": "any"
+                  "example": "integer"
                 },
                 "gender": {
-                  "example": "any"
+                  "example": "string"
                 },
                 "major": {
-                  "example": "any"
+                  "example": "string"
                 },
                 "gpa": {
-                  "example": "any"
+                  "example": "string"
                 },
                 "enrollmentDate": {
-                  "example": "any"
+                  "example": "string"
                 },
                 "projectedGraduationDate": {
-                  "example": "any"
+                  "example": "string"
+                },
+                "email": {
+                  "example": "string"
                 }
               }
             }
@@ -256,6 +266,7 @@
     },
     "/student/{id}": {
       "get": {
+        "tags": ["Student"],
         "description": "",
         "parameters": [
           {
@@ -278,6 +289,7 @@
         }
       },
       "put": {
+        "tags": ["Student"],
         "description": "",
         "parameters": [
           {
@@ -293,31 +305,31 @@
               "type": "object",
               "properties": {
                 "firstName": {
-                  "example": "any"
+                  "example": "string"
                 },
                 "lastName": {
-                  "example": "any"
+                  "example": "string"
                 },
                 "age": {
-                  "example": "any"
+                  "example": "integer"
                 },
                 "gender": {
-                  "example": "any"
+                  "example": "string"
                 },
                 "major": {
-                  "example": "any"
+                  "example": "string"
                 },
                 "gpa": {
-                  "example": "any"
+                  "example": "string"
                 },
                 "enrollmentDate": {
-                  "example": "any"
+                  "example": "string"
                 },
                 "projectedGraduationDate": {
-                  "example": "any"
+                  "example": "string"
                 },
                 "email": {
-                  "example": "any"
+                  "example": "string"
                 }
               }
             }
@@ -339,6 +351,7 @@
         }
       },
       "delete": {
+        "tags": ["Student"],
         "description": "",
         "parameters": [
           {

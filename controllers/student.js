@@ -31,6 +31,7 @@ const createstudent = async (req, res) => {
     const student = {
         firstName: req.body.firstName,
         lastName: req.body.lastName,
+        email: req.body.email,
         age: req.body.age,
         gender: req.body.gender,
         major: req.body.major,
@@ -57,6 +58,7 @@ const updatestudent = async (req, res) => {
     const student = {
         firstName: req.body.firstName,
         lastName: req.body.lastName,
+        email: req.body.email,
         age: req.body.age,
         gender: req.body.gender,
         major: req.body.major,
