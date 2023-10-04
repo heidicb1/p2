@@ -1,10 +1,11 @@
 // Import modules and controllers
 const express = require('express');
 const router = express.Router();
+// Import validation middleware for request validation
+const validation = require('../middleware/validate');
 // Import professorController for handling professor-related routes
 const professorController = require('../controllers/professor'); 
-// Import validation middleware for request validation
-const validation = require('../middleware/validate'); 
+ 
 
 // Define the routes and their corresponding controller functions
 // Handle GET request to fetch all professors

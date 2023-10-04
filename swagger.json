@@ -32,7 +32,7 @@
                     "type": "string"
                   },
                   "hireYear": {
-                    "type": "string"
+                    "type": "integer"
                   },
                   "department": {
                     "type": "string"
@@ -66,25 +66,25 @@
               "type": "object",
               "properties": {
                 "firstName": {
-                  "example": "any"
+                  "example": "Jane"
                 },
                 "lastName": {
-                  "example": "any"
+                  "example": "Doe"
                 },
                 "hireYear": {
-                  "example": "any"
+                  "example": "2019"
                 },
                 "department": {
-                  "example": "any"
+                  "example": "Computer Science"
                 },
                 "title": {
-                  "example": "any"
+                  "example": "Professor"
                 },
                 "email": {
-                  "example": "any"
+                  "example": "janedoe@example.com"
                 },
                 "course": {
-                  "example": "any"
+                  "example": "CSE-340"
                 }
               }
             }
@@ -107,7 +107,7 @@
                   "type": "string"
                 },
                 "hireYear": {
-                  "type": "string"
+                  "type": "integer"
                 },
                 "department": {
                   "type": "string"
@@ -119,7 +119,7 @@
                   "type": "string"
                 },
                 "course": {
-                  "example": "any"
+                  "type": "string"
                 }
               }
             }
@@ -159,7 +159,7 @@
                   "type": "string"
                 },
                 "hireYear": {
-                  "type": "string"
+                  "type": "integer"
                 },
                 "department": {
                   "type": "string"
@@ -171,7 +171,7 @@
                   "type": "string"
                 },
                 "course": {
-                  "example": "any"
+                  "type": "string"
                 }
               }
             }
@@ -201,25 +201,25 @@
               "type": "object",
               "properties": {
                 "firstName": {
-                  "example": "any"
+                  "example": "Jane"
                 },
                 "lastName": {
-                  "example": "any"
+                  "example": "Doe"
                 },
                 "hireYear": {
-                  "example": "any"
+                  "example": 2019
                 },
                 "department": {
-                  "example": "any"
+                  "example": "Computer Science"
                 },
                 "title": {
-                  "example": "any"
+                  "example": "Professor"
                 },
                 "email": {
-                  "example": "any"
+                  "example": "janedoe@example.com"
                 },
                 "course": {
-                  "example": "any"
+                  "example": "CSE-340"
                 }
               }
             }
