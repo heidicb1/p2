@@ -5,7 +5,7 @@
     "description": "Professor/Student API",
     "version": "1.0.0"
   },
-  "host": "localhost:3000",
+  "host": "https://p2-zcd1.onrender.com", 
   "basePath": "/",
   "schemes": [
     "https",
