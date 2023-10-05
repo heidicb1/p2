@@ -41,7 +41,7 @@ app.use(cors({ origin: '*' }));
 
 // Include and use routes defined in separate files
 app.use('/', require('./routes'));
-//TEST
+
 // Configure Passport.js for GitHub OAuth2 authentication strategy
 passport.use(new GitHubStrategy({
     clientID: process.env.GITHUB_CLIENT_ID,
