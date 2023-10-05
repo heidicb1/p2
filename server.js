@@ -49,7 +49,11 @@ passport.use(new GitHubStrategy({
     callbackURL: process.env.CALLBACK_URL,
 }, function (accessToken, refreshToken, profile, done) {
     // GitHub authentication strategy callback function
-    return done(null, profile);
+    const user = {
+        id: profile.id, // You can include other user information as needed
+        displayName: profile.displayName, // Get the display name from the GitHub profile
+    };
+    return done(null, user);
 }));
 
 // Serialize and deserialize user objects for session management
